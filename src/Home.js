@@ -2,12 +2,9 @@ import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
-    const [blogs, setBlogs] = useState ([
-        // { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
-        // { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
-        // { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
-      ])
+    const [blogs, setBlogs] = useState (null)
     const [IsPending, setIsPending] = useState(true);
+    const [Error, setError] = useState(null);
 
     const HandleDelete = (id) => {
         const newblogs = blogs.filter((blogs) => blogs.id !== id);
@@ -15,12 +12,21 @@ const Home = () => {
     } 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:8000/blogs')
+            fetch('http://localhost:8000/logs')
         .then(res => {
+            if(!res.ok){
+                throw ('Failed to Load the Data! Sorry :9')
+            }
             return res.json();
         })
         .then(data => {
-            setBlogs(data)
+            setBlogs(data) 
+            setIsPending(false);
+            setError(null);
+        })
+        .catch(err => {
+            // console.log(err);
+            setError(err);
             setIsPending(false);
         })
         }, 1000)
@@ -29,7 +35,8 @@ const Home = () => {
     return ( 
         <div className="home">
              <h1> HomePage</h1>
-             {IsPending && <div>Loading . . . :)</div>}
+             {IsPending && <div className="pending23"> Loading . . . :) </div>}
+             {Error && <div className="error12"> { Error } </div>}
              {blogs && <BlogList blogs = {blogs} HandleDelete = {HandleDelete}/>}  
              {/* <BlogList blogs = {blogs.filter((blogs) => blogs.author === "mario")} title = "Mario's blogs" HandleDelete = {HandleDelete} /> */}
              {/* <BlogList blogs = {blogs.filter((blogs) => blogs.author === "yoshi")} title = "Yoshi's Blogs" HandleDelete = {HandleDelete} /> */}

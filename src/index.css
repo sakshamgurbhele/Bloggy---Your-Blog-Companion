@@ -62,3 +62,15 @@
   color: #11090b;
   margin-bottom: 8px;
 }
+.error12 {
+  color: #f1356d;
+  font-size: 2rem;
+  margin-bottom: 8px;
+  margin: auto;
+  align-items: center;
+}
+.pending23 {
+  color: #f1356d;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
