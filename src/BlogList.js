@@ -7,7 +7,7 @@ const BlogList = (props) => {
     console.log(props)
     return ( 
         <div className="blog-list">
-            <h2>{heading}</h2>
+            <h2>All Blogs!</h2>
             {blogs.map((blogs) => (
             <div className="blog-preview" key={blogs.id}>
                 <h2>{blogs.title}</h2>
