@@ -12,7 +12,7 @@ const Home = () => {
     } 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:8000/logs')
+            fetch('http://localhost:8000/blog')
         .then(res => {
             if(!res.ok){
                 throw ('Failed to Load the Data! Sorry :9')
