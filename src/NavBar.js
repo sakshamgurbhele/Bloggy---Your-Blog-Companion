@@ -6,7 +6,7 @@ const NavBar = () => {
                 <a href="https://www.google.com">Google</a>
                 <a href="/">Yahoo!</a>
                 <a href="/">Instagram</a>
-                <a href="/">Twitter</a>
+                <a href="/">Twitter!</a>
             </div>   
         </nav>
      );
