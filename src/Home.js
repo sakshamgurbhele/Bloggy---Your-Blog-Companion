@@ -15,7 +15,7 @@ const Home = () => {
             fetch('http://localhost:8000/blogs')
         .then(res => {
             if(!res.ok){
-                throw ('Failed to Load the Data! Sorry :9')
+                throw ('Failed to Load the Data!')
             }
             return res.json();
         })
@@ -29,7 +29,7 @@ const Home = () => {
             setError(err);
             setIsPending(false);
         })
-        }, 1000)
+        }, 2000)
     }, []);
 
     return ( 
